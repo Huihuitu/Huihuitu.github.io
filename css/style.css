@@ -110,9 +110,9 @@
     height: 25px;
     float:left;
     position: absolute;
-    top:500px;
-    left:130px;
-    opacity: 0;
+    top:530px;
+    left:-230px;
+    opacity: 1;
 }
 .conent .zy{
 
@@ -120,8 +120,26 @@
     height: 25px;
     float:right;
     position: absolute;
-    top:500px;
-    right:130px;
+    top:530px;
+    right:-230px;
+    opacity: 1;
+}
+.conent .zy_1{
+    width:239px;
+    height:435px;
+    float:right;
+    position: absolute;
+    top:565px;
+    right:80px;
+    opacity: 0;
+}
+.conent .jb_1{
+    width:239px;
+    height:435px;
+    float:right;
+    position: absolute;
+    top:565px;
+    left:80px;
     opacity: 0;
 }
 .conent .box .menu{
@@ -198,7 +216,7 @@
     overflow:hidden;
     position:relative;
     border-radius: 50%;
-    box-shadow: inset 0px 0px 30px #000;
+   /* box-shadow: inset 0px 0px 30px #000;*/
 }
 .nav .nav_con .bg1 {
     background: url("../img/11.png") no-repeat;

@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Home</title>
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width,user-scalab=no"，ini-scale=1 ">
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/common.css" />
 <link rel="stylesheet" href="css/style.css" />
@@ -18,6 +18,8 @@
 		var oGif=document.getElementById('gif');
 		var oJb=document.querySelector('.jb');
 		var oZy=document.querySelector('.zy');
+		var oZy1=document.querySelector('.zy_1');
+		var oJb1=document.querySelector('.jb_1');
 
 		window.onscroll= function () {
 			var scrTop=document.documentElement.scrollTop||document.body.scrollTop;
@@ -25,22 +27,26 @@
 				oBanner.style.height='40px';
 				oConent.style.marginTop='180px';
 				oBox.style.height='40px';
-				oMenu.style.bottom='0';
+				oMenu.style.bottom='25px';
 				oConent.style.height='660px';
                 move(oBannerN,{opacity:1},{time:600,type:'linear'});
 				move(oGif,{height:40,opacity:1},{time:600,type:'linear'});
-				move(oJb,{top:150},{time:600});
-				move(oZy,{top:150},{time:600});
+				move(oJb,{top:80},{time:600});
+				move(oZy,{top:80},{time:600});
+				move(oZy1,{top:130},{time:600});
+				move(oJb1,{top:130},{time:600});
 			}else {
 				oBanner.style.height='360px';
 				oBox.style.height='360px';
 				oConent.style.marginTop='40px';
 				oConent.style.height='960px';
-				oMenu.style.bottom='-180px';
+				oMenu.style.bottom='-120px';
                 move(oBannerN,{opacity:0},{time:600,type:'linear'});
 				move(oGif,{height:360,opacity:1},{time:600,type:'linear'});
-				move(oJb,{top:500},{time:600});
-				move(oZy,{top:500},{time:600});
+				move(oJb,{top:530},{time:600});
+				move(oZy,{top:530},{time:600});
+				move(oZy1,{top:565},{time:600});
+				move(oJb1,{top:565},{time:600});
 			}
 		};
 
@@ -49,8 +55,10 @@
 			move(oLo,{opacity:0},{time:600,type:'linear'});
 			//oMenu.style.display='block';
 			move(oMenu,{opacity:1},{time:1200,type:'linear'});
-			move(oJb,{opacity:1},{time:1200,type:'linear'});
-			move(oZy,{opacity:1},{time:1200,type:'linear'});
+			move(oJb,{left:130},{time:300,type:'ease-out'});
+			move(oZy,{right:130},{time:300,type:'ease-out'});
+			move(oZy1,{opacity:1},{time:2200,type:'linear'});
+			move(oJb1,{opacity:1},{time:2200,type:'linear'});
 			oMenu.style.zIndex='2';
 		};
 
@@ -200,6 +208,8 @@
 		<p>Nothing impossible></p>
 		<img src="img/jb.png" class="jb"/>
 		<img src="img/zy.png" class="zy"/>
+		<img src="img/opus.png" class="zy_1"/>
+		<img src="img/about.png" class="jb_1"/>
 	</div>
 	<div class="nav">
 		<p>作品展示</p>
