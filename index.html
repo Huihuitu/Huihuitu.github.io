@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Home</title>
-<meta name="viewport" content="width=device-width,user-scalab=no"，ini-scale=1 ">
+<meta name="viewport" content="width=device-width,user-scalab=no，ini-scale=1 ">
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/common.css" />
 <link rel="stylesheet" href="css/style.css" />
@@ -178,6 +178,25 @@
 			}
 		})();
 
+		var oTab=document.getElementById('tab');
+		var aTabli=oTab.children;
+		for(var i=0;i<aTabli.length;i++){
+			aTabli[i].style.left = i*40+'px';
+		}
+		for(var i=0;i<aTabli.length;i++){
+			(function(index){
+				aTabli[i].onmouseover= function () {
+					for(var i=0;i<aTabli.length;i++){
+						if(i<=index){
+							move(aTabli[i],{left:i*40});
+						}else if(i>index){
+							move(aTabli[i],{left:820+(i-1)*40});
+						}
+					}
+				}
+			})(i);
+		}
+
 
 	};
 </script>
@@ -206,10 +225,10 @@
 		</div>
 
 		<p>Nothing impossible></p>
-		<img src="img/jb.png" class="jb"/>
-		<img src="img/zy.png" class="zy"/>
-		<img src="img/opus.png" class="zy_1"/>
-		<img src="img/about.png" class="jb_1"/>
+		<img src="img/jb.png" alt="jb" class="jb"/>
+		<img src="img/zy.png" alt="zy" class="zy"/>
+		<img src="img/opus.png" alt="opus"  class="zy_1"/>
+		<img src="img/about.png" alt="about" class="jb_1"/>
 	</div>
 	<div class="nav">
 		<p>作品展示</p>
@@ -232,7 +251,24 @@
 		</ul>
 	</div>
 	<div class="footer">
-
+		<h3>XXX</h3>
+		<p>xxxxxxxxxxxxx<br/>xxxxxxxxxxxxx</p>
+		<ul id="tab">
+			<li>
+				<img src="img/html.png" alt="html"/>
+				<span style="background:#dccdbf">H<br/>T<br/>M<br/>L<br/></span>
+			</li>
+			<li>
+				<img src="img/js.png" alt="js"/>
+				<span style="background:#1a526d">
+					J<br/>a<br/>v<br/>a<br/>S<br/>c<br/>r<br/>i<br/>p<br/>t<br/>
+				</span>
+			</li>
+			<li>
+				<img src="img/css.png" alt="css"/>
+				<span style="background:#84d8ff">C<br/>S<br/>S<br/></span>
+			</li>
+		</ul>
 	</div>
 	<div class="partner">
 
