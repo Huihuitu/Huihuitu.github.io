@@ -63,41 +63,45 @@
 		};
 
 		var oH3=document.querySelector('.menu_logo ');
+		var aDiv = oH3.children;
 		var r=5;
 		var c=5;
-		var n=0;
-		var bl=false;
-		for(var i=0;i<r;i++){
-			for(var j=0;j<c;j++){
-				var oS=document.createElement('span');
-				oS.style.width = oH3.offsetWidth/c+'px';
-				oS.style.height = oH3.offsetHeight/r+'px';
-				oS.innerHTML = '<em class="front"></em><em class="back"></em>';
-				oH3.appendChild(oS);
-				oS.style.left = j*oS.offsetWidth+'px';
-				oS.style.top = i*oS.offsetHeight+'px';
-				var oFront=oS.children[0];
-				var oBack=oS.children[1];
-				oFront.style.backgroundPosition= -j*oS.offsetWidth+'px '+-i*oS.offsetHeight+'px';
-				oBack.style.backgroundPosition= -j*oS.offsetWidth+'px '+-i*oS.offsetHeight+'px';
-				oS.r=i;
-				oS.c=j;
+		var now=0;
+		var  ready=true;
+		for(var i=0;i<c;i++){
+			for(var j=0;j<r;j++){
+				var oDiv=document.createElement('div');
+				oH3.appendChild(oDiv);
+				oDiv.style.width=oH3.offsetWidth/r+'px';
+				oDiv.style.height=oH3.offsetHeight/c+'px';
+				oDiv.style.backgroundPosition=-oDiv.offsetLeft+'px '+ -oDiv.offsetTop+'px';
+				oDiv.c=i;
+				oDiv.r=j;
 			}
 		}
 		oH3.onmouseout= function () {
-			if(bl)return;
-			bl=true;
-			n++;
-			var aS=oH3.children;
-			for(var i=0;i<aS.length;i++){
-				aS[i].style.WebkitTransition='1s all ease';
-				(function (index) {
+			if(!ready) return;
+			ready=false;
+			for(var i=0;i<aDiv.length;i++){
+				(function(index){
 					setTimeout(function(){
-						aS[index].style.WebkitTransform='perspective(800px) rotateY(180deg)';
-					},(aS[i].r+aS[i].c)*100);
+						move(aDiv[index],{opacity:0},{time:1200,fn:function(){
+							now++;
+							now%=3;
+							if(index==aDiv.length-1){
+								for(var i=0;i<aDiv.length;i++){
+									aDiv[i].style.backgroundImage = 'url("../img/'+(now%2)+'.png")';
+									aDiv[i].style.opacity=1;
+									oH3.style.backgroundImage = 'url("../img/'+(now-1)%2+'.png")';
+								}
+								ready=true;
+							}
+						}})	;
+					},(aDiv[i].r+aDiv[i].c)*100)
 				})(i);
 			}
-			function tranend(){
+		};
+			/*function tranend(){
 				aS[aS.length-1].removeEventListener('transitionend',tranend,false);
 				for(var i=0;i<aS.length;i++) {
 					aS[i].style.WebkitTransition='none';
@@ -111,7 +115,7 @@
 				bl=false;
 			}
 			aS[aS.length-1].addEventListener('transitionend',tranend,false);
-		};
+		};*/
 
 
 		function hoverDir(obj,ev){
@@ -234,12 +238,12 @@
 		<p>作品展示</p>
 		<ul class="nav_con">
 			<li class="opus bg1">
-				<a href="javascript:;" target="_blank">
+				<a href="index_css.html" target="_blank">
 					<span>CSS/HTML</span>
 				</a>
 			</li>
 			<li class="opus bg2">
-				<a href="javascript:;" target="_blank">
+				<a href="index_js.html" target="_blank">
 					<span>JavaScript</span>
 				</a>
 			</li>

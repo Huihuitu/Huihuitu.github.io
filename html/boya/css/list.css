@@ -1,0 +1,164 @@
+#banner{
+	width:100%;
+	height: 254px;
+	background:url(../images/listbanner.jpg) no-repeat center top;
+}
+#boyagame{
+	width:1000px;
+	margin:0 auto;
+}
+#boyagame .bread{
+	width: 1000px;
+	height:69px;
+	border-bottom:1px solid #ccc;
+}
+#boyagame .bread h1 a.headline{
+	float: left;
+	padding-left: 30px;
+}
+#boyagame .bread h1 a.headline:link,#boyagame .bread h1 a.headline:visited{
+	font:20px/120% "微软雅黑" ,"宋体";
+	color:#444866;
+	background:url(../images/icons.png) no-repeat -475px -86px;
+	line-height: 69px;
+}
+#boyagame .bread a{
+	float: right;
+	padding-left: 43px;
+}
+#boyagame .bread a:link,#boyagame .bread a:visited{
+	font:12px/120% "微软雅黑","宋体";
+	color:#444866;
+	background:url(../images/icons.png) no-repeat -459px -280px;
+	line-height: 69px;
+}
+
+#boyagame .main{
+	margin-top: 45px;
+}
+#boyagame .main .slidebar{
+	width:195px;
+	margin-right:40px;
+}
+#boyagame .main .slidebar ul li{
+	float: left;
+	border-bottom: 1px solid #ccc;
+	width:195px;
+	height:75px;
+	
+}
+#boyagame .main .slidebar ul li a{
+	display: block;
+	padding-left:52px;
+}
+#boyagame .main .slidebar ul li a:link,#boyagame .main .slidebar ul li a:visited{
+	font:14px/120% "微软雅黑","宋体";
+	line-height:75px;
+	color:#393939;
+	background:url(../images/icons.png) no-repeat -5px -118px;
+}
+#boyagame .main .slidebar ul li a:hover{
+	color:#38B774;
+}
+
+#boyagame .main .slidebar ul li.no1 a:link,#boyagame .main .slidebar ul li.no1 a:visited{
+	color:#38B774;
+	background-position: -210px -119px;
+}
+#boyagame .main .slidebar ul li.no2 a:link,#boyagame .main .slidebar ul li.no2 a:visited{
+	background-position: -4px -179px;
+}
+#boyagame .main .slidebar ul li.no2 a:hover{
+	background-position: -210px -179px;
+}
+#boyagame .main .slidebar ul li.no3 a:link,#boyagame .main .slidebar ul li.no3 a:visited{
+	background-position: -6px -244px;
+}
+#boyagame .main .slidebar ul li.no3 a:hover{
+	background-position: -212px -244px;
+}
+#boyagame .main .slidebar ul li.no4 a:link,#boyagame .main .slidebar ul li.no4 a:visited{
+	background-position: -4px -307px;
+}
+#boyagame .main .slidebar ul li.no4 a:hover{
+	background-position: -210px -307px;
+}
+
+#boyagame .main .gamelist{
+	width:753px;
+}
+#boyagame .main .gamelist ul li{
+	float: left;
+	width: 355px;
+	height: 329px;
+	margin:0 36px 42px 0;
+	border:1px solid #ccc;
+	text-align: center;
+	background-color:#f7f7f7;;
+}
+#boyagame .main .gamelist ul li img{
+	width: 331px;
+	height: 195px;
+}
+#boyagame .main .gamelist ul li h3{
+	float: left;
+	height:30px;
+	padding:22px 0 0 63px;
+}
+#boyagame .main .gamelist ul li h3 a:link,#boyagame .main .gamelist ul li h3 a:visited{
+	line-height: 55px;
+	font:16px/120% "微软雅黑","宋体";
+	color:#393939;
+}
+#boyagame .main .gamelist ul li h3 a:hover{
+	color:#38B774;
+}
+#boyagame .main .gamelist ul li span.koper{
+	float: left;
+	height:30px;
+	padding:26px 15px 0 9px;
+	line-height:55px;
+	font:12px/120% "微软雅黑","宋体";
+	cursor: pointer;
+	color:#38B774;
+	background:url(../images/icons.png) no-repeat -332px 29px;
+}
+#boyagame .main .gamelist ul li .gamelink{
+	width: 333px;
+	padding-left:48px;
+	padding-right:38px;
+}
+#boyagame .main .gamelist ul li .gamelink span.appstore a{
+	float: left;
+	display:block;
+	height:74px;
+	width:125px;
+	padding-left:8px;
+}
+#boyagame .main .gamelist ul li .gamelink span.appstore a:link,#boyagame .main .gamelist ul li .gamelink span.appstore a:visited{
+	font:14px/120% "微软雅黑","宋体";
+	line-height:74px;
+	color:#393939;
+	background:url(../images/icons.png) no-repeat 0  -631px;
+}
+#boyagame .main .gamelist ul li .gamelink span.qr a{
+	float: left;
+	width:128px;
+	height:74px;
+	padding-left:8px;
+}
+#boyagame .main .gamelist ul li .gamelink span.qr a:link,#boyagame .main .gamelist ul li .gamelink span.qr a:visited{
+	font:14px/120% "微软雅黑","宋体";
+	line-height:74px;
+	color:#393939;
+	background:url(../images/icons.png) no-repeat 0  -685px;
+}
+#boyagame .more a{
+	display: block;
+	width:213px;
+	height:56px;
+	background:url(../images/icons.png) no-repeat -287px  -440px;
+	text-align: center;
+	line-height: 56px;
+	color: #fff;
+}	

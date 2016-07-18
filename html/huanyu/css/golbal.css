@@ -1,0 +1,89 @@
+.banxin{
+	width: 985px;
+	margin: 0 auto;
+}
+#header{
+	width: 100%;
+	height: 80px;
+	background:url(../images/headerbg.jpg) repeat-x center top;
+}
+#header .logo{
+	width: 156px;
+	height: 55px;
+	padding: 25px 5px 0 5px;
+}
+#header .logo h1 a{
+	display: block;
+	width: 156px;
+	height: 22px;
+	background:url(../images/icons.png) no-repeat -4px -11px;
+	text-indent: -9999px;
+}
+#header .soso{
+	padding-top: 10px;
+	padding-left: 30px;
+	
+}
+#header .soso input{
+	display: block;
+	width: 140px;
+	height: 18px;
+}
+#header .language{
+	width: 190px;
+	height: 44px;
+	margin-left: 400px;
+}
+#header .language ul li{
+	float: left;
+	margin:0 10px 0 10px;
+}
+#header .language ul li a:link,#header .language ul li a:visited{
+	font:12px/120px "微软雅黑","宋体";
+	color:#393939;
+	line-height: 44px;
+}
+#header .language ul li a:hover{
+	color:#DE3434;
+}
+
+#header .nav{
+	width: 675px;
+	height: 34px;
+	position: relative;
+}
+#header .nav .bd ul li{
+	float: left;
+	margin-left: 30px;
+}
+#header .nav .bd ul li a:link,#header .nav .bd ul li a:visited{
+	font:14px/120px "微软雅黑","宋体";
+	color:#393939;
+	line-height: 34px;
+}
+#header .nav .bd ul li a:hover{
+	color:#DE3434;
+}
+
+#header .nav .bd ul li .zicaidan{
+	position: absolute;
+	top:36px;
+	left: 0;
+	display: none;
+	width: 675px;
+	height: 34px;
+	background:#DE3434;
+	z-index: 99;
+}
+#header .nav .bd ul li .zicaidan span{
+	float: left;
+	margin-left: 30px;
+
+}
+#header .nav .bd ul li .zicaidan span a:link,#header .nav .bd ul li .zicaidan span a:visited{
+
+	color:#fff;
+}
+#header .nav .bd ul li .zicaidan span a:hover{
+	background: none;
+}

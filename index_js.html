@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0; list-style:none; }
+        body{
+            background: url("img/ccz.gif") no-repeat;
+            background-size:100% 880px;
+        }
+        h3{
+            font:bold 30px "微软雅黑";
+            margin:40px auto;
+            color: #f1d732;
+            width:150px;
+        }
+        #ul{
+            width:960px;
+            height:460px;
+            margin:100px auto 30px;
+            position:relative;
+        }
+        #ul li{
+            width:220px;
+            height:140px;
+            background:pink;
+            float:left;
+            margin-left:10px;
+            margin-top:10px;
+            border:3px solid #666;
+        }
+        #ul li a{
+            width:100%;
+            height:100%;
+            display: block;
+        }
+        p{
+            margin:0 auto;
+            width: 120px;
+            background: #220c44;
+            color: #fff;
+            text-align:center;
+            font:16px/30px "微软雅黑";
+            cursor: pointer;
+        }
+        img{ width:100%;
+            height:100%;}
+    </style>
+    <script src="js/move8.js"></script>
+    <script>
+        window.onload= function () {
+            var oUl = document.getElementById('ul');
+            var aLi = oUl.children;
+            var oP = document.getElementById('p1');
+            var ready=true;
+            var arr=[];
+            for(var i=0;i<aLi.length;i++){
+                arr.push({
+                    left:aLi[i].offsetLeft,
+                    top:aLi[i].offsetTop,
+                    opacity:1,
+                    width:220,
+                    height:140});
+                aLi[i].style.left=arr[i].left+'px';
+                aLi[i].style.top=arr[i].top+'px';
+            }
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].style.position='absolute';
+                aLi[i].style.margin=0;
+            }
+                 oP.onclick= function () {
+                    if(!ready) return;
+                    ready=false;
+                    var i=aLi.length-1;
+                    var timer=setInterval(function(){
+                        (function(index){
+                            move(aLi[i],{left:oUl.offsetWidth/2,
+                                top:oUl.offsetHeight,
+                                opacity:0,
+                                width:0,
+                                height:0},{fn:function(){
+                                var i=aLi.length-1;
+                                var timer=setInterval(function(){
+                                    (function(index){
+                                        move(aLi[i],arr[i],{fn:function(){
+                                            if(index==0){
+                                                ready=true;
+                                            }
+                                        }});
+                                    })(i);
+                                    i--;
+                                    if(i==-1){
+                                        clearInterval(timer);
+                                    }
+                                },100)
+                            }});
+                            i--;
+                            if(i==-1){
+                                clearInterval(timer);
+                            }
+                        })(i);
+                    },100)
+                }
+        }
+    </script>
+</head>
+<body>
+<h3>JavaScript</h3>
+<ul id="ul">
+    <li><a href="javaScript/zhediecaidan/index.html" target="_blank"><img src="img/js1.png" ></a></li>
+    <li><a href="javaScript/juli/index.html" target="_blank"><img src="img/js22.png" ></a></li>
+    <li><a href="javaScript/tuozhuaituou/index.html" target="_blank"><img src="img/js3.png" ></a></li>
+    <li><a href=""><img src="img/"  target="_blank"></a></li>
+    <li><a href=""><img src="img/"  target="_blank"></a></li>
+    <li><a href=""><img src="img/"  target="_blank"></a></li>
+    <li><a href=""><img src="img/"  target="_blank"></a></li>
+    <li><a href=""><img src="img/"  target="_blank"></a></li>
+    <li><a href=""><img src="img/"  target="_blank"></a></li>
+    <li><a href=""><img src="img/"  target="_blank"></a></li>
+    <li><a href=""><img src="img/"  target="_blank"></a></li>
+    <li><a href=""><img src="img/"  target="_blank"></a></li>
+</ul>
+<p id="p1">
+    收回释放
+</p>
+</body>
+</html>

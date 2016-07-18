@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+* {	margin: 0;	padding: 0; list-style: none; }
+body { margin:30px 150px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+.nav { width: 240px; font-size: 12px; background: #8e9eb1; overflow: hidden; border: 1px solid #8e9eb1;margin:100px auto; }
+.nav li { width: 240px; line-height: 24px; float: left; }
+.nav h2 { width: 240px; float: left; cursor: pointer; border-bottom: 1px #666 solid; }
+.nav .active { background: url(images/nav_link.gif) repeat-x; }
+.nav h2 span { padding-left: 30px; font-size: 12px; color: #fff; font-weight: normal; background: url(images/nav.gif) no-repeat 10px center; }
+.nav ul { width: 240px; height:0px; overflow:hidden; }
+.nav ul li { width: 240px; background: url(images/menu.gif) repeat-x; }
+.nav ul li a { display: block; width: 200px; float: left; padding-left: 40px; background: url(images/nav2.gif) no-repeat 20px center; color:#6b7f97; text-decoration: none; }
+</style>
+<script src="move8.js"></script>
+<script>
+	window.onload=function(){
+		var oUl=document.getElementById('nav');
+		var aLi=oUl.children;		
+		var aUl=oUl.getElementsByTagName('ul');
+		var aH2=oUl.getElementsByTagName('h2');
+		
+		for(var i=0;i<aLi.length;i++){
+			(function(index){
+				aLi[i].onclick=function(){
+					if(aH2[index].className){
+						move(aUl[index],{height:0});
+						aH2[index].className='';
+					}else{
+						for(var i=0;i<aLi.length;i++){
+							aH2[i].className='';
+							move(aUl[index],{height:0});
+						}						
+						
+						aH2[index].className='active';
+						var h=aUl[index].children.length*24;
+						move(aUl[index],{height:h});
+					};					
+				}
+			})(i);
+		}
+	}
+</script>
+</head>
+
+<body>
+	<ul id="nav" class="nav">
+    	<li>
+        	<h2><span>首页</span></h2>
+            <ul>
+            	<li><a href="javascript:;">公司金融</a></li>
+                <li><a href="javascript:;">个人金融</a></li>
+                <li><a href="javascript:;">银行卡</a></li>
+                <li><a href="javascript:;">金融市场</a></li>
+                <li><a href="javascript:;">电子银行</a></li>
+            </ul>
+        </li>
+        <li>
+        	<h2><span>首页</span></h2>
+            <ul>
+            	<li><a href="javascript:;">惠民金融</a></li>
+                <li><a href="javascript:;">出国金融</a></li>
+                <li><a href="javascript:;">中行相伴</a></li>
+                <li><a href="javascript:;">中国E财</a></li> 
+            </ul>
+        </li>
+         <li>
+        	<h2><span>首页</span></h2>
+            <ul>
+            	<li><a href="javascript:;">手机银行</a></li>
+                <li><a href="javascript:;">服务价目</a></li>
+                <li><a href="javascript:;">自助填单</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

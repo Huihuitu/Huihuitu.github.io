@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/golbal.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(
+			function(){
+				$(".nav .bd ul li").mouseenter(
+					function(){
+						$(".zicaidan").hide();
+						$(this).children(".zicaidan").show();
+					}
+				);
+				$(".nav .bd ul li").mouseleave(
+					function(){
+						$(this).children(".zicaidan").delay(2000).hide(1);
+					}
+				);
+			}
+		);
+	</script>
+	<script type="text/javascript" src="js/hx.js"></script>
+	<script type="text/javascript" src="js/gb.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			hx(500,2000);
+			gb(3000);
+		}
+	</script>
+</head>
+<body>
+	<div class="banxin"></div>
+
+	<div id="header">
+		<div class="banxin">
+			<div class="logo fl">
+				<h1><a href="#">环宇建设集团</a></h1>
+			</div>
+			<div class="soso fr">
+				<input type="text"/>
+			</div>
+			<div class="language fr">
+				<ul>
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">中文</a></li>
+					<li><a href="#">ENGLISH</a></li>
+				</ul>
+			</div>
+			<div class="nav fl">
+				<div class="bd">
+					<ul>
+						<li><a href="#">首页</a></li>
+						<li>
+							<a href="#">走进环宇</a>
+							<div class="zicaidan">
+								<span><a href="#">集团介绍</a></span>
+								<span><a href="#">集团产业</a></span>
+								<span><a href="#">董事长致辞</a></span>
+								<span><a href="#">组织介绍</a></span>
+								<span><a href="#">企业荣誉</a></span>
+								<span><a href="#">大事记</a></span>
+								<span><a href="#">联系方式</a></span>
+							</div>
+						</li>
+						<li>
+							<a href="#">新闻中心</a>
+							<div class="zicaidan">
+								<span><a href="#">新闻资讯</a></span>
+								<span><a href="#">新闻资讯</a></span>
+								<span><a href="#">新闻资讯</a></span>
+								<span><a href="#">新闻资讯</a></span>
+								<span><a href="#">新闻资讯</a></span>
+							</div>
+						</li>
+						<li>
+							<a href="#">产品中心</a>
+							<div class="zicaidan">
+								<span><a href="#">产品汇总</a></span>
+								<span><a href="#">产品认证</a></span>
+								<span><a href="#">专利证书</a></span>
+								<span><a href="#">工程案例</a></span>
+								<span><a href="#">新闻资讯</a></span>
+							</div>	
+						</li>
+						<li><a href="#">服务与支持</a></li>
+						<li><a href="#">环宇文化</a></li>
+						<li><a href="#">人力资源</a></li>
+						<li><a href="#">营销中心</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="cl"></div>
+	<div id="banner">
+		<ul class="tuul">
+			<li class="no1"><img src="images/banner1.jpg" /></li>
+			<li class="no2"><img src="images/banner2.jpg" /></li>
+ 
+		</ul>
+		<div class="anniu">
+			<span class="rightbut"></span>
+			<span class="leftbut"></span>
+		</div>
+		<ul class="dianul fl">
+			<li class="cur"></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="banxin">
+		<div id="content">
+			<div class="contentlist">
+				<div class="about fl">
+					<h1><a href="#">走进环宇</a></h1>
+					<div class="hd">
+						<a href="#">集团介绍</a>
+					</div>
+					<div class="bd">
+						<img src="images/about.jpg" alt="" />
+						<a href="#">环宇集团有限公司是环宇集团的前身。创建于1989年，注册资金2.6168亿元...</a>
+					</div>
+				</div>
+				<div class="news fl">
+					<h1><a href="#">新闻中心</a></h1>
+					<div class="hd">
+						<a href="#">新闻动态</a>
+					</div>
+					<div class="bd">
+						<img src="images/news.jpg" alt="" />
+						<p>通讯地址:</p>
+						<p>河南省郑州市金水区刘寨</p>
+						<a href="#">MORE INFO &gt;&gt;</a>
+					</div>
+				</div>
+				<div class="product fl">
+					<h1><a href="#">产品展示</a></h1>
+					<div class="hd">
+						<ul class="tuul">
+							<li class="cur"><a href="#"></a></li>
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+						</ul>
+					</div>
+					<div class="bd">
+						<ul class="dianul">
+							<li class="cur"><a href="#"><img src="images/product1.jpg" alt="" /></a></li>
+							<li><a href="#"><img src="images/product2.jpg" alt="" /></a></li>	
+							<li><a href="#"><img src="images/product3.jpg" alt="" /></a></li>
+							<li><a href="#"><img src="images/product4.jpg" alt="" /></a></li>	
+							<li><a href="#"><img src="images/product5.jpg" alt="" /></a></li>		
+						</ul>
+					</div>
+				</div>
+				<div class="market fl">
+					<h1><a href="#">营销中心</a></h1>
+					<div class="zai">
+						<a href="#">环宇在中国</a>
+					</div>
+					<div class="xuanze">
+						<select>
+							<option value="#">请选择</option>
+							<option value="#">环宇河南办事处</option>
+							<option value="#">环宇河北办事处</option>
+						</select>
+					</div>
+					<div class="pic">
+						<a href="#"><img src="images/network.jpg" alt="" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="cl"></div>
+	<div id="footer">
+		<div class="banxin">
+			<div class="smallnav">
+				<ul>
+					<li><a href="#">网站地图</a></li>
+					<li><a href="#">走进环宇</a></li>
+					<li><a href="#">联系我们</a></li>
+					<li><a href="#">企业邮箱</a></li>
+					<li><a class="noborder" href="#">环宇微信</a></li>
+				</ul>
+			</div>	
+			<p>ICP备12024185号-1&nbsp;&nbsp;&nbsp;&nbsp;Copyright&nbsp;&nbsp;©&nbsp;&nbsp;中国&nbsp;&nbsp;• &nbsp;&nbsp;环宇集团</p>
+		</div>
+	</div>
+</body>
+</html>

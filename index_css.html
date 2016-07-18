@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0; padding:0; list-style:none;}
+        body{
+            overflow:hidden;
+            background:url("img/caa.gif");
+            background-size: 100%;
+        }
+        h3{
+            width: 125px;
+            color: #17598b;
+            font:30px "微软雅黑";
+            margin:39px auto;
+        }
+        span{
+            width:90px;
+            height:40px;
+            font:20px/40px "微软雅黑";
+            display: block;
+            float: left;
+            color:#fff;
+            background: #38a4f1;
+            margin-left:30px;
+            text-align: center;
+            box-shadow: 1px 1px 3px #fff,-1px -1px 3px #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        p{
+            display: block;
+            width:240px;
+            margin:80px auto;
+            text-align: center;
+            top:80px;left:550px;
+        }
+        ul{width:3300px;
+            position:relative;
+            top:100px;
+            left:435px;
+            -webkit-transition:1s all ease;
+        }
+        ul li{
+            width:500px;
+            height:350px;
+            -webkit-transition:1s all ease;
+            margin:20px;
+            position:absolute;
+        }
+
+        ul li img{width:100%;height:100%;}
+
+        .cur{-webit-transform:perspective(1000px) translate(0px ,0px) rotateY(0deg);z-index:5;opacity: 1;}
+        .l1{-webkit-transform: perspective(1000px) translate(-250px, 0px) rotateY(45deg);z-index:4;opacity:1;}
+        .l2{-webkit-transform: perspective(1000px) translate(-350px, 0px) rotateY(45deg);z-index:3;opacity:0;}
+        .r1{-webkit-transform: perspective(1000px)  translate(250px, 0px) rotateY(-45deg);z-index:4;opacity:1;}
+        .r2{-webkit-transform: perspective(1000px) translate(350px, 0px) rotateY(-45deg);z-index:3;opacity:0;}
+    </style>
+    <script>
+        window.onload= function () {
+            var oBtn1=document.getElementById('btn1');
+            var oBtn2=document.getElementById('btn2');
+            var oUl=document.querySelector('.ul');
+            var aLi=oUl.getElementsByTagName('li');
+            var oC=document.querySelector('.cur');
+
+            var bl=false;
+            var sclass=[];
+            for(var i=0;i<aLi.length;i++){
+                sclass[i]=aLi[i].className;
+            }
+            oBtn1.onclick= function () {
+                if(bl)return;
+                bl=true;
+                sclass.unshift(sclass.pop());
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].className=sclass[i];
+                }
+                function tranend(){
+                    oC.removeEventListener('transitionend',tranend,false);
+                    bl=false;
+                }
+                oC.addEventListener('transitionend',tranend,false);
+            }
+
+            oBtn2.onclick= function () {
+                if(bl) return;
+                bl=true;
+                sclass.push(sclass.shift());
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].className=sclass[i];
+                }
+                function tranend(){
+                    oC.removeEventListener('transitionend',tranend,false);
+                    bl=false;
+                }
+                oC.addEventListener('transitionend',tranend,false);
+            }
+        }
+    </script>
+</head>
+<body>
+<h3>CSS/HTML</h3>
+<p>
+    <span id="btn1">←向左走</span>
+    <span  id="btn2">向右走→</span>
+</p>
+<ul class="ul">
+    <li class="cur">
+        <a href="html/meilishuo/index.html" target="_blank"> <img src="img/html1.png" alt=""/></a>
+    </li>
+    <li class="r1">
+        <a href="html/aiqiyi/index.html" target="_blank"> <img src="img/html2.png" alt=""/></a>
+    </li>
+    <li class="r2">
+        <a href="html/beijingdaxue/index.html" target="_blank"> <img src="img/html3.png" alt=""/></a>
+    </li>
+    <li class="l2">
+        <a href="html/huanyu/index.html" target="_blank"> <img src="img/html4.png" alt=""/></a>
+    </li>
+    <li class="l1">
+        <a href="html/boya/index.html" target="_blank"> <img src="img/html5.png" alt=""/></a>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,33 @@
+#banner .hd ul li{
+	height:567px;
+	background:url(../images/banner2.jpg) no-repeat center top;
+}
+#content{
+	width:1000px;
+	margin:0 auto;
+}
+#content .bread{
+	width: 1000px;
+	height:69px;
+	background-color: #F3F3F3;
+	border-bottom:1px solid #ccc;
+	padding:0 20px;
+}
+#content .bread h1 a.headline{
+	float: left;
+}
+#content .bread h1 a.headline:link,#content .bread h1 a.headline:visited{
+	font:20px/120% "微软雅黑" ,"宋体";
+	color:#444866;
+	line-height: 69px;
+}
+#content .bread a.game{
+	float: right;
+	padding-left: 43px;
+}
+#content .bread a.game:link,#content .bread a.game:visited{
+	font:12px/120% "微软雅黑","宋体";
+	color:#444866;
+	background:url(../images/icons.png) no-repeat -459px -280px;
+	line-height: 69px;
+}
