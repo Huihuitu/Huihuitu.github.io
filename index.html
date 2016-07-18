@@ -90,9 +90,9 @@
 							now%=3;
 							if(index==aDiv.length-1){
 								for(var i=0;i<aDiv.length;i++){
-									aDiv[i].style.backgroundImage = 'url("../img/'+(now%2)+'.png")';
+									aDiv[i].style.backgroundImage = 'url("../img/'+(now-1)%2+'.png")';
 									aDiv[i].style.opacity=1;
-									oH3.style.backgroundImage = 'url("../img/'+(now-1)%2+'.png")';
+									oH3.style.backgroundImage = 'url("../img/'+(now%2)+'.png")';
 								}
 								ready=true;
 							}
