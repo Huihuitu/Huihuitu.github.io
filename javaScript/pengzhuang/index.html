@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+body{background:#222;}
+#ul{ width:900px; margin:150px auto;}
+#ul li{float:left;width:132px;height:132px;margin:30px;border:10px solid #000;border-radius:20%;background:#fff;}
+</style>
+<script src="move8.js"></script>
+<script>
+window.onload = function(){
+	var oUl=document.getElementById('ul');
+	var aLi=oUl.children;
+	var arr=[];
+	var zIndex=1;
+	
+	for(var i=0;i<aLi.length;i++){
+		arr.push({left:aLi[i].offsetLeft,top:aLi[i].offsetTop});
+		aLi[i].style.left=arr[i].left+'px';
+		aLi[i].style.top=arr[i].top+'px';
+	}
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.position='absolute';	
+		aLi[i].style.margin=0;
+		aLi[i].index=i;
+	}	
+	for(var i=0;i<aLi.length;i++){
+		dar(aLi[i]);
+	}
+	
+	function dar(obj){
+		obj.onmousedown=function(ev){
+			obj.style.zIndex=zIndex++;
+			var e=ev||event;
+			var disX=e.clientX-obj.offsetLeft;
+			var disY=e.clientY-obj.offsetTop;
+			document.onmousemove=function(ev){
+				var e=ev||event;
+				obj.style.left=e.clientX-disX+'px';
+				obj.style.top=e.clientY-disY+'px';
+				
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.borderColor='#000';
+				}
+				var near=nearest(obj);
+				if(near){
+					near.style.borderColor='pink';	
+				}
+				
+				document.onmouseup = function(){
+					document.onmouseup = document.onmousemove=null;
+					
+					var nearObj=nearest(obj);
+					if(nearObj){
+						move(obj,{left:nearObj.offsetLeft,top:nearObj.offsetTop});
+						move(nearObj,{left:arr[obj.index].left,top:arr[obj.index].top})
+						nearObj.style.borderColor='#000';
+						var tmp=obj.index;
+						obj.index=nearObj.index;
+						nearObj.index=tmp;
+						
+					}else{
+						move(obj,{left:arr[obj.index].left,top:arr[obj.index].top})	
+					}
+				}
+				return false;
+			}
+		}
+	}
+	
+	function collTest(obj1,obj2){
+		var l1=obj1.offsetLeft;
+		var r1=obj1.offsetLeft+obj1.offsetWidth;
+		var t1=obj1.offsetTop;
+		var b1=obj1.offsetTop+obj1.offsetHeight;
+		
+		var l2=obj2.offsetLeft;
+		var r2=obj2.offsetLeft+obj2.offsetWidth;
+		var t2=obj2.offsetTop;
+		var b2=obj2.offsetTop+obj2.offsetHeight;
+		
+		if(l1>r2||t1>b2||r1<l2||b1<t2){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	function getDis(obj1,obj2){
+		var a=obj2.offsetLeft-obj1.offsetLeft;
+		var b=obj2.offsetTop-obj1.offsetTop;
+		return Math.sqrt(a*a+b*b);
+	}
+	function nearest(obj){
+		var minDis=99999;
+		var minDisIndex=-1;
+		for(var i=0;i<aLi.length;i++){
+			if(obj==aLi[i]) continue;
+			if(collTest(obj,aLi[i])){
+				var dis=getDis(obj,aLi[i]);
+				if(dis<minDis){
+					minDis=dis;
+					minDisIndex=i;
+				}
+			}
+		}
+		if(minDisIndex==-1){
+			return null;
+		}else{
+			return aLi[minDisIndex]	
+		}
+	}
+	
+	
+}
+</script>
+</head>
+
+<body>
+<ul id="ul">
+	<li><img src="img/1.png" alt="o"/></li>
+    <li><img src="img/2.png" alt="o"/></li>
+    <li><img src="img/3.png" alt="o"/></li>
+    <li><img src="img/4.png" alt="o"/></li>
+    <li><img src="img/5.png" alt="o"/></li>
+    <li><img src="img/6.png" alt="o"/></li>
+    <li><img src="img/7.png" alt="o"/></li>
+    <li><img src="img/8.png" alt="o"/></li>
+</ul>
+</body>
+</html>

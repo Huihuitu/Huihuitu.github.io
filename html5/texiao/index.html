@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        overflow: hidden;
+    }
+    #box2 {
+        text-align: center;
+        margin-top:50px;
+    }
+    input {
+        width: 130px;
+        height: 40px;
+        border: 2px solid #999;
+        border-radius: 10px;
+        color: #fff;
+        font-family: 'Microsoft Yahei';
+        font-size: 25px;
+        line-height: 30px;
+        text-align: center;
+        box-shadow: inset 0 0 10px #fff, 0 10px 1px #333;
+        outline: none;
+        -webkit-transition: 0.2s all ease;
+        -o-transition: 0.2s all ease;
+        transition: 0.2s all ease;
+        -webkit-transform: perspective(800px) rotateX(25deg) translateY(0);
+        -ms-transform: perspective(800px) rotateX(25deg) translateY(0);
+        -o-transform: perspective(800px) rotateX(25deg) translateY(0);
+        transform: perspective(800px) rotateX(25deg) translateY(0);
+        cursor: pointer;
+    }
+    input.te1 {
+        background: -webkit-linear-gradient(#5DF8AB,#22B566);
+        background: -o-linear-gradient(#5DF8AB,#22B566);
+        background: linear-gradient(#5DF8AB,#22B566);
+    }
+    input.te2 {
+        background: -webkit-linear-gradient(#F88CBC,#C453A7);
+        background: -o-linear-gradient(#F88CBC,#C453A7);
+        background: linear-gradient(#F88CBC,#C453A7);
+    }
+    input.te3 {
+        background: -webkit-linear-gradient(#7FECF4,#46BFBE);
+        background: -o-linear-gradient(#7FECF4,#46BFBE);
+        background: linear-gradient(#7FECF4,#46BFBE);
+    }
+    input:hover {
+        box-shadow: inset 0 0 25px #fff, 0 10px 1px #333;
+    }
+    input:active {
+        box-shadow: inset 0 0 25px #fff, 0 2px 1px #333;
+        -webkit-transform: perspective(800px) rotateX(25deg) translateY(8px);
+        -ms-transform: perspective(800px) rotateX(25deg) translateY(8px);
+        -o-transform: perspective(800px) rotateX(25deg) translateY(8px);
+        transform: perspective(800px) rotateX(25deg) translateY(8px);
+    }
+    #b1{
+        width:700px;
+        height:400px;
+        position:absolute;
+        top:50%; left:50%;
+        margin-top:-200px;
+        margin-left:-350px;
+        background:url("1.png") no-repeat;
+       -webkit-transform:perspective(800px);
+    }
+
+</style>
+<script>
+    function rnd(n,m){return Math.floor(Math.random()*(m-n)+n)}
+    window.onload = function() {
+        var oBox2= document.querySelector('#box2');
+        var oBtn1 = oBox2.children[0];
+        var oBtn2 = oBox2.children[1];
+        var oBtn3 = oBox2.children[2];
+        var oDiv=document.querySelector('#b1');
+
+        var iNow=0;
+        var bOk=false;
+        oBtn1.onclick=function(){
+            if(bOk)return;
+            bOk=true;
+            oDiv.style.background='url('+((iNow+1)%3+1)+'.png) no-repeat';
+            var r=4;
+            var c=7;
+            for(var i=0;i<r;i++){
+                for(var j=0;j<c;j++){
+                    var oS=document.createElement('span');
+                    oS.style.width=(oDiv.offsetWidth/c)+'px';
+                    oS.style.height=(oDiv.offsetHeight/r)+'px';
+                    oS.style.WebkitTransition='1s all ease';
+                    oS.style.WebkitTransform='perspective(800px)';
+                    oS.style.background='url('+(iNow%3+1)+'.png) '+-j*(oDiv.offsetWidth/c)+'px '+-i*(oDiv.offsetHeight/r)+'px';
+                    oS.style.position='absolute';
+                    oDiv.appendChild(oS);
+                    oS.style.top=i*(oDiv.offsetHeight/r)+'px';
+                    oS.style.left=j*(oDiv.offsetWidth/c)+'px';
+                }
+            }
+            var aS=document.querySelectorAll('#b1 span');
+            for(var i=0;i<aS.length;i++){
+
+                aS[i].style.WebkitTransform='perspective(800px) translate('+(aS[i].offsetWidth/2+aS[i].offsetLeft-oDiv.offsetWidth/2)+'px,'+(aS[i].offsetHeight/2+aS[i].offsetTop-oDiv.offsetHeight/2)+'px) rotateX('+rnd(40,190)+'deg) rotateY('+rnd(40,190)+'deg)';
+                aS[i].style.opacity='0';
+
+            }
+            aS[aS.length-1].addEventListener('transitionend',function(){
+                for(var i=0;i<aS.length;i++){
+                    oS.style.WebkitTransition='none';
+                }
+                oDiv.innerHTML='';
+                bOk=false;
+            },false);
+            iNow++;
+        };
+
+        oBtn2.onclick=function(){
+            if(bOk)return;
+            bOk=true;
+            oDiv.innerHTML='';
+            oDiv.style.background='url('+((iNow+1)%3+1)+'.png) no-repeat';
+            var r=4;
+            var c=7;
+            for(var i=0;i<r;i++){
+                for(var j=0;j<c;j++){
+                    var oS=document.createElement('span');
+                    oS.style.width=(oDiv.offsetWidth/c)+'px';
+                    oS.style.height=(oDiv.offsetHeight/r)+'px';
+                    oS.style.WebkitTransition='1s all ease';
+                    oS.style.WebkitTransformStyle='preserve-3d';
+                    oS.style.WebkitTransform='perspective(800px)';
+                    //oS.style.background='url(img/'+(iNow%3+1)+'.jpg) '+-j*(oDiv.offsetWidth/c)+'px '+-i*(oDiv.offsetHeight/r)+'px';
+                    oS.style.position='absolute';
+                    oDiv.appendChild(oS);
+                    oS.style.top=i*(oDiv.offsetHeight/r)+'px';
+                    oS.style.left=j*(oDiv.offsetWidth/c)+'px';
+                    var oI=document.createElement('i');
+                    var oEm=document.createElement('em');
+                    oI.style.position='absolute';
+                    oI.style.width=(oDiv.offsetWidth/c)+'px';
+                    oI.style.height=(oDiv.offsetHeight/r)+'px';
+                    oI.style.background='url('+(iNow%3+1)+'.png) '+-j*(oDiv.offsetWidth/c)+'px '+-i*(oDiv.offsetHeight/r)+'px';
+                    oEm.style.position='absolute';
+                    oEm.style.width=(oDiv.offsetWidth/c)+'px';
+                    oEm.style.height=(oDiv.offsetHeight/r)+'px';
+                    oEm.style.background='url('+((iNow+1)%3+1)+'.png) '+-j*(oDiv.offsetWidth/c)+'px '+-i*(oDiv.offsetHeight/r)+'px';
+                    oS.appendChild(oI);
+                    oS.appendChild(oEm);
+                    oI.style.WebkitTransform='translateZ(1px)';
+                    oEm.style.WebkitTransform='translateZ(-1px) scale(-1,1)';
+                    oS.r=i;
+                    oS.c=j
+                }
+            }
+            var aS=document.querySelectorAll('#b1 span');
+            for(var i=0;i<aS.length;i++){
+                (function(i){
+                    setTimeout(function(){
+                        aS[i].style.WebkitTransform='perspective(800px) rotateY(180deg)';
+                    },(aS[i].r+aS[i].c)*100);
+                })(i);
+            }
+            aS[aS.length-1].addEventListener('transitionend',function(){
+                for(var i=0;i<aS.length;i++){
+                    oS.style.WebkitTransition='none';
+                }
+                oDiv.innerHTML='';
+                bOk=false;
+            },false);
+
+            iNow++;
+        };
+
+        oBtn3.onclick=function(){
+            if(bOk)return;
+            bOk=true;
+            var n=2;
+            oDiv.innerHTML='';
+            oDiv.style.background='url('+((iNow+1)%3+1)+'.png)';
+            for(var i=0;i<n;i++){
+                var oS=document.createElement('span');
+                oS.style.position='absolute';
+                oS.style.width=oDiv.offsetWidth/n+'px';
+                oS.style.height=oDiv.offsetHeight+'px';
+                oS.style.WebkitTransformStyle='preserve-3d';
+                oS.style.WebkitTransition='1s all ease';
+                oS.style.WebkitTransformOrigin='left'
+                oS.style.WebkitTransform='perspective(800px) rotateY(0deg)';
+                oS.style.top='0px';
+                oS.style.left=i*oDiv.offsetWidth/n+'px';
+                oDiv.appendChild(oS);
+                // 正反页
+                var oI=document.createElement('i');
+                var oEm=document.createElement('em');
+                oI.style.position='absolute';
+                oI.style.width=oDiv.offsetWidth/n+'px';
+                oI.style.height=oDiv.offsetHeight+'px';
+                oI.style.top='0px';
+                oI.style.left='0px';
+                oI.style.background='url('+(iNow%3+1)+'.png) '+i*oDiv.offsetWidth/n+'px 0px';
+
+                oEm.style.position='absolute';
+                oEm.style.width=oDiv.offsetWidth/n+'px';
+                oEm.style.height=oDiv.offsetHeight+'px';
+                oEm.style.top='0px';
+                oEm.style.left='0px';
+                oEm.style.background='url('+((iNow+1)%3+1)+'.png) 0px 0px';
+                oS.appendChild(oI);
+                oS.appendChild(oEm);
+                oI.style.WebkitTransform='translateZ(1px)';
+                oEm.style.WebkitTransform='translateZ(-1px) scale(-1,1)';
+            }
+            var oS=document.querySelectorAll('#b1 span')[1];
+            oS.style.WebkitTransform='perspective(800px) rotateY(-180deg)';
+            oS.addEventListener('transitionend',function(){
+                oDiv.innerHTML='';
+                bOk=false;
+            },false);
+            iNow++;
+        };
+
+    }
+</script>
+</head>
+
+<body>
+<div id="box2">
+    <input type="button" value="爆炸" class="te1"/>
+    <input type="button" value="翻转" class="te2"/>
+    <input type="button" value="翻页" class="te3"/>
+</div>
+<div id="b1"></div>
+
+</body>
+</html>

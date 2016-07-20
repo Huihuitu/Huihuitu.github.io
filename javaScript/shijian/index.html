@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+body { background:url(bg.png);background-size: 100%; color:#fff; font-size:60px;}
+div{position: relative;top:100px;left:300px;}
+</style>
+<script>
+function addZero(n) {
+	if (n < 10) {
+		return "0" + n;
+	} else {
+		return  n + "";
+	}
+}
+
+window.onload = function() {
+	var aImg = document.getElementsByTagName("img");
+	
+	clock();
+	setInterval(clock,1000);
+	
+	function clock(){
+		var oDate = new Date();
+		var iHour = oDate.getHours();
+		var iMin = oDate.getMinutes();
+		var iS = oDate.getSeconds();
+		
+		var str = addZero(iHour) + addZero(iMin) + addZero(iS);
+		for (var i = 0; i < str.length; i++) {
+			aImg[i].src = str.charAt(i) +".png";
+		}
+		
+	}
+	
+};
+</script>
+</head>
+
+<body>
+<div>
+	<img src="0.png"/>
+	<img src="0.png"/>
+	:
+	<img src="0.png"/>
+	<img src="0.png"/>
+	:
+	<img src="0.png"/>
+	<img src="0.png"/>
+</div>
+</body>
+</html>

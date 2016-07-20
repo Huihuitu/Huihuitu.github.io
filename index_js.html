@@ -29,6 +29,8 @@
             margin-left:10px;
             margin-top:10px;
             border:3px solid #666;
+            overflow:hidden;
+
         }
         #ul li a{
             width:100%;
@@ -44,8 +46,9 @@
             font:16px/30px "微软雅黑";
             cursor: pointer;
         }
-        img{ width:100%;
-            height:100%;}
+        img{ width:100%; height:100%;}
+        #ul li div{height:60px; width:100%; position:absolute; left:0; bottom:-60px; opacity:0; filter:alpha(opacity:0);background: #000;}
+        #ul li div span{position:absolute; left:0; top:0; color:white; z-index:2;}
     </style>
     <script src="js/move8.js"></script>
     <script>
@@ -102,24 +105,119 @@
                         })(i);
                     },100)
                 }
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].onmouseover=function(){
+                    var thisDiv=this.children[0].children[1];
+                    move(thisDiv,{bottom:0,opacity:0.6},{time:300});
+                };
+                aLi[i].onmouseout=function(){
+                    var thisDiv=this.children[0].children[1];
+                    move(thisDiv,{bottom:-thisDiv.offsetHeight,opacity:0},{time:300});
+                };
+            }
         }
     </script>
 </head>
 <body>
 <h3>JavaScript</h3>
 <ul id="ul">
-    <li><a href="javaScript/zhediecaidan/index.html" target="_blank"><img src="img/js1.png" ></a></li>
-    <li><a href="javaScript/juli/index.html" target="_blank"><img src="img/js22.png" ></a></li>
-    <li><a href="javaScript/tuozhuaituou/index.html" target="_blank"><img src="img/js3.png" ></a></li>
-    <li><a href=""><img src="img/"  target="_blank"></a></li>
-    <li><a href=""><img src="img/"  target="_blank"></a></li>
-    <li><a href=""><img src="img/"  target="_blank"></a></li>
-    <li><a href=""><img src="img/"  target="_blank"></a></li>
-    <li><a href=""><img src="img/"  target="_blank"></a></li>
-    <li><a href=""><img src="img/"  target="_blank"></a></li>
-    <li><a href=""><img src="img/"  target="_blank"></a></li>
-    <li><a href=""><img src="img/"  target="_blank"></a></li>
-    <li><a href=""><img src="img/"  target="_blank"></a></li>
+    <li>
+         <a href="javaScript/shijian/index.html" target="_blank">
+             <img  src="img/js11.png" >
+             <div>
+                 <span>图片时间</span>
+             </div>
+         </a>
+
+    </li>
+    <li>
+        <a href="javaScript/zhediecaidan/index.html" target="_blank">
+            <img src="img/js1.png" >
+            <div>
+                <span>折叠菜单</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/juli/index.html" target="_blank">
+            <img src="img/js2.png" >
+            <div>
+                <span>距离缩放</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/fangdajing/index.html" target="_blank">
+            <img  src="img/js6.png" >
+            <div>
+                <span>放大镜</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/gundongtiao/index.html" target="_blank">
+            <img src="img/js9.png">
+            <div>
+                <span>自定义滚动条</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/dingbucaidan/index.html" target="_blank">
+            <img src="img/js7.png" >
+            <div>
+                <span>顶部跟随菜单</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/xingxingpingjia/index.html" target="_blank">
+            <img src="img/js8.png" >
+            <div>
+                <span>星星评分</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/pubu/index.html" target="_blank">
+            <img src="img/js5.png">
+            <div>
+                <span>瀑布流</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/pengzhuang/index.html" target="_blank">
+            <img src="img/js4.png">
+            <div>
+                <span>拖拽碰撞换位</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/jianpankongzhi/index.html" target="_blank">
+            <img  src="img/js10.png" >
+            <div>
+                <span>键盘控制图片</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/tuozhuaitu/index.html" target="_blank">
+            <img src="img/js3.png" >
+            <div>
+                <span>拖拽图片幻灯片</span>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="javaScript/lunbotu/index.html" target="_blank">
+            <img  src="img/js12.png" >
+            <div>
+                <span>选项卡切换</span>
+            </div>
+        </a>
+    </li>
 </ul>
 <p id="p1">
     收回释放

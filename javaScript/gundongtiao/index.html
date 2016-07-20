@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #warp{
+            width: 300px;
+            height: 320px;
+            padding-top: 100px;
+            margin:0 auto;
+        }
+        #head{
+            width: 300px;
+            height: 25px;
+        }
+        #head li{
+            float: left;
+            width: 150px;
+            height: 25px;
+            background: #efefef;
+            border-radius: 8px 8px 0 0 ;
+            font-size: 12px;
+            text-align: center;
+            line-height: 25px;
+        }
+        #head .active{
+            background: #847b73;
+            color: white;
+        }
+        #main{
+            width: 280px;
+            height: 230px;
+            border:10px #efefef solid;
+            border-radius: 0 0 8px 8px;
+            background: #efefef;
+            position: relative;
+            overflow: hidden;
+        }
+        #main ul{
+            position: absolute;
+            display: none;
+        }
+        #main .active{
+            display: block;
+        }
+        #main li{
+            width: 265px;
+            height: 22px;
+            border-bottom: 1px white solid;
+            border-top: 1px #cecece solid;
+        }
+        #main input{
+            width: 11px;
+            height: 25px;
+            position: absolute;
+        }
+        #up{
+            top: 180px;
+            left: 269px;
+        }
+        #down{
+            top: 205px;
+            left: 269px;
+        }
+        #div1{
+            width: 9px;
+            height: 178px;
+            border:1px solid #c0c0c0;
+            border-radius: 3px;
+            background: #ded6d6;
+            position: absolute;
+            top:0;
+            left: 269px;
+        }
+        #mark{
+            width: 9px;
+            height: 45px;
+            background: #f77b00;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var oBar=document.getElementById('mark')
+            var oBarParent=document.getElementById('div1')
+            var oContentWrap=document.getElementById('main')
+            var oContent=oContentWrap.children[0];
+            var oWrap=document.getElementById('warp')
+            var oUp=document.getElementById('up')
+            var oDown=document.getElementById('down')
+            var aCardHead=document.getElementById('head').children;
+            var aCardContent=document.getElementById('main').getElementsByTagName('ul');
+            var timer=null;
+            //选项卡
+            for (var i = 0; i < aCardHead.length; i++) {
+                (function(index){
+                    aCardHead[i].onclick=function(){
+                        for (var i = 0; i < aCardHead.length; i++) {
+                            aCardHead[i].className=aCardContent[i].className='';
+                        };
+                        this.className='active';
+                        aCardContent[index].className='active';
+                        oContent=aCardContent[index];//更新拖拽内容
+                        //a=c/d*b
+                        oBar.style.top=oContent.offsetTop/(oContentWrap.offsetHeight-oContent.offsetHeight)*(oBarParent.offsetHeight-oBar.offsetHeight)+'px';
+                    };
+                })(i);
+            };
+            //拖拽
+            oBar.onmousedown=function(ev){
+                var oEvt=ev||event;
+                var disY=oEvt.clientY-oBar.offsetTop;
+                document.onmousemove=function(ev){
+                    var oEvt=ev||event;
+                    var t=oEvt.clientY-disY;//控制oBar
+                    setPos(t);
+                };
+                document.onmouseup=function(){
+                    document.onmouseup=document.onmousemove=null;
+                };
+                return false;
+            };
+            function setPos(t){
+                if(t<0)t=0;
+                if(t>oBarParent.offsetHeight-oBar.offsetHeight)
+                    t=oBarParent.offsetHeight-oBar.offsetHeight;
+                oBar.style.top=t+'px';
+                var scale=oBar.offsetTop/(oBarParent.offsetHeight-oBar.offsetHeight);
+                //控制oContent
+                oContent.style.top=scale*(oContentWrap.offsetHeight-oContent.offsetHeight)+'px';
+            }
+            //滚轮
+            addMouseWheel(oWrap,function(down){
+                //计算t
+                var t=oBar.offsetTop;
+                if(down){
+                    t+=10;
+                }else{
+                    t-=10;
+                }
+                setPos(t);
+            });
+            function addMouseWheel(obj,fn){
+                if(navigator.userAgent.toLowerCase().indexOf('firefox') != -1){
+                    obj.addEventListener('DOMMouseScroll', fnWheel,false)
+                }else{
+                    obj.onmousewheel=fnWheel;
+                }
+                function fnWheel(ev){
+                    var oEvt=ev||event;
+                    var down=false;
+                    if(oEvt.wheelDelta){
+                        down=oEvt.wheelDelta<0?true:false;
+                    }else{
+                        down=oEvt.detail>0?true:false;
+                    }
+                    fn && fn(down);
+                }
+            }
+            //上下
+            oDown.onmousedown=oUp.onmousedown=function(){
+                var _this=this;
+                timer=setInterval(function(){
+                    var t=oBar.offsetTop;
+                    if(_this.id=='down'){
+                        t+=10;
+                    }else{
+                        t-=10;
+                    }
+                    setPos(t);
+                },100);
+            };
+            oDown.onmouseup=oUp.onmouseup=function(){
+                clearInterval(timer);
+            };
+            oDown.onclick=oUp.onclick=function(){
+                var t=oBar.offsetTop;
+                if(this.id=='up'){
+                    t-=10;
+                }else{
+                    t+=10;
+                }
+                setPos(t);
+            };
+
+
+
+
+        };
+    </script>
+</head>
+<body>
+<div id="warp">
+    <ul id="head">
+        <li class="active">所有频道</li>
+        <li>最爱频道</li>
+    </ul>
+    <div id="main">
+        <ul class="active">
+            <li>未完成的歌</li>
+            <li>初学者</li>
+            <li>下雨了</li>
+            <li>丑八怪</li>
+            <li>你还要我怎样</li>
+            <li>演员</li>
+            <li>一半</li>
+            <li>认真的雪</li>
+            <li>绅士</li>
+            <li>我知道你都知道</li>
+            <li>几个你</li>
+            <li>其实</li>
+            <li>意外</li>
+            <li>我想起你了</li>
+            <li>为了遇见你</li>
+            <li>你过的好吗</li>
+            <li>深深爱过你</li>
+            <li>我们爱过就好</li>
+            <li>传说</li>
+
+        </ul>
+        <ul>
+            <li>在，也不见</li>
+            <li>遇见</li>
+            <li>我怀念的</li>
+            <li>我不难过</li>
+            <li>尚好的青春</li>
+            <li>开始懂了</li>
+            <li>同类</li>
+            <li>绿光</li>
+            <li>雨天</li>
+            <li>我也很想他</li>
+            <li>原点</li>
+            <li>咕叽咕叽</li>
+            <li>眼泪成诗</li>
+            <li>简爱</li>
+            <li>第一天</li>
+            <li>天黑黑</li>
+            <li>风筝</li>
+            <li>完美的一天</li>
+            <li>我要的幸福</li>
+
+        </ul>
+        <div id="div1">
+            <div id="mark"></div>
+        </div>
+        <input id="up" type="button" value="↑">
+        <input id="down" type="button" value="↓">
+    </div>
+</div>
+
+</body>
+</html>

@@ -21,6 +21,32 @@
 		var oZy1=document.querySelector('.zy_1');
 		var oJb1=document.querySelector('.jb_1');
 
+		var oFixed=document.getElementById('fixed');
+		var timer=null;
+		var bl=false;
+		oFixed.onclick=function(){
+			move1(0,1000);
+		};
+		function move1(iTarget,time){
+			var start=document.documentElement.scrollTop||document.body.scrollTop;
+			var dis=iTarget-start;
+			var count=Math.round(time/30);
+			var n=0;
+			clearInterval(timer);
+			timer=setInterval(function(){
+				n++;
+				var a=1-n/count;
+				var cur=start+dis*(1-a*a*a);
+
+				document.documentElement.scrollTop=cur;
+				document.body.scrollTop=cur;
+				bl=false;
+
+				if(n==count){
+					clearInterval(timer);
+				}
+			},30);
+		}
 		window.onscroll= function () {
 			var scrTop=document.documentElement.scrollTop||document.body.scrollTop;
 			if(scrTop>1){
@@ -48,6 +74,10 @@
 				move(oZy1,{top:565},{time:600});
 				move(oJb1,{top:565},{time:600});
 			}
+			if(bl){
+				clearInterval(timer);
+			}
+			bl=true;
 		};
 
 		var oLo=document.querySelector('.conent .logo');
@@ -87,12 +117,12 @@
 					setTimeout(function(){
 						move(aDiv[index],{opacity:0},{time:1200,fn:function(){
 							now++;
-							now%=3;
+							//now%=3;
 							if(index==aDiv.length-1){
 								for(var i=0;i<aDiv.length;i++){
-									aDiv[i].style.backgroundImage = 'url("../img/'+(now-1)%2+'.png")';
+									aDiv[i].style.backgroundImage = 'url("../img/'+(now%2)+'.png")';
 									aDiv[i].style.opacity=1;
-									oH3.style.backgroundImage = 'url("../img/'+(now%2)+'.png")';
+									oH3.style.backgroundImage = 'url("../img/'+(now-1)%2+'.png")';
 								}
 								ready=true;
 							}
@@ -202,6 +232,8 @@
 		}
 
 
+
+
 	};
 </script>
 </head>
@@ -210,7 +242,7 @@
 	<div class="banner">
 		<img src="img/c.gif" id="gif"/>
 		<div class="banner_nav">
-            <a href="">HOME</a>
+            <a href="">HOME</a>xcc
             <a href="">ABOUT</a>
             <a href="">SKILLS</a>
             <a href="">CONTACT</a>
@@ -248,7 +280,7 @@
 				</a>
 			</li>
 			<li class="opus bg3">
-				<a href="javascript:;" target="_blank">
+				<a href="index_html5.html" target="_blank">
 					<span>HTML5/CSS3</span>
 				</a>
 			</li>
@@ -277,7 +309,7 @@
 	<div class="partner">
 
 	</div>
-
+	<div id="fixed"></div>
 </div>
 </body>
 </html>

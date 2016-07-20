@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{width:880px;height:410px;padding:100px 0 0 260px;}
+        body{background: url("img/ccn.gif") no-repeat;background-size: 100% 888px;}
+        h3{
+            font:bold 30px "微软雅黑";
+            margin:40px auto;
+            color: #f14473;
+            width:200px;
+        }
+        .ul .opus{
+            background:#6F5656;
+            width:200px;height:200px;
+            background:#F1F2EE;
+            margin:0 8px 8px 0;
+            float:left;
+            cursor:pointer;
+            overflow:hidden;
+            position:relative;
+            border:3px solid #666;
+        }
+        .ul .opus span{
+            position:absolute;
+            left:-200px; top:0;
+            width:100%; height:100%;
+            text-align:left;
+            line-height:50px;
+            font-size:20px;
+            font-weight:bold;
+            background:#fff;
+            color:#212220;
+            opacity:0.6;
+            text-indent:1em;
+        }
+        img{   width:200px;height:200px;}
+    </style>
+    <script>
+        function getStyle(obj,name){
+            return (obj.currentStyle || getComputedStyle(obj,false))[name];
+        }
+        function moveChange(obj,json,options){
+            options=options || {};
+            options.duration=options.duration || 500;
+            options.easing=options.easing || 'ease-out';
+
+            var count=Math.ceil(options.duration/30);
+            var start={};
+            var dis={};
+            for(var name in json){
+                start[name]=parseFloat(getStyle(obj,name));
+
+                if(isNaN(start[name])){
+                    switch(name){
+                        case 'left':
+                            start[name]=obj.offsetLeft;
+                            break;
+                        case 'top':
+                            start[name]=obj.offsetTop;
+                            break;
+                        case 'width':
+                            start[name]=obj.offsetWidth;
+                            break;
+                        case 'height':
+                            start[name]=obj.offsetHeight;
+                            break;
+                        case 'opacity':
+                            start[name]=1;
+                            break;
+                        case 'fontSize':
+                            start[name]=12;
+                            break;
+                        //.....
+                    }
+                }
+
+                dis[name]=json[name]-start[name];
+            }
+
+            var n=0;
+
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                n++;
+
+                for(var name in json){
+
+                    switch(options.easing){
+                        case 'linear':
+                            var a=n/count;
+                            var cur=start[name]+dis[name]*a;
+                            break;
+                        case 'ease-in':
+                            var a=n/count;
+                            var cur=start[name]+dis[name]*Math.pow(a,3);
+                            break;
+                        case 'ease-out':
+                            var a=1-n/count;
+                            var cur=start[name]+dis[name]*(1-Math.pow(a,3));
+                            break;
+                    }
+
+                    if(name=='opacity'){
+                        obj.style.opacity=cur;
+                        obj.style.filter='alpha(opacity:'+cur*100+')';
+                    }else{
+                        obj.style[name]=cur+'px';
+                    }
+                }
+
+                if(n==count){
+                    clearInterval(obj.timer);
+                    options.complete && options.complete();
+                }
+            },30);
+        }
+        function getByClass(oParent,sClass){
+            if(oParent.getElementsByClassName){
+                return oParent.getElementsByClassName(sClass);
+            }else{
+                var arr=[];
+                //var reg=/\bsClass\b/;
+                var reg=new RegExp('\\b'+sClass+'\\b');
+                var aEle=oParent.getElementsByTagName('*');
+                for(var i=0; i<aEle.length; i++){
+                    if(reg.test(aEle[i].className)){
+                        arr.push(aEle[i]);
+                    }
+                }
+                return arr;
+            }
+        }
+
+        window.onload=function(){
+            function hoverDir(obj,ev){
+                var w=obj.offsetWidth;
+                var h=obj.offsetHeight;
+
+                var x=w/2+obj.offsetLeft-ev.clientX;
+                var y=h/2+obj.offsetTop-ev.clientY;
+
+                return Math.round((Math.atan2(y,x)*180/Math.PI+180)/90)%4;
+            }
+            (function(){
+                var oUl=document.querySelector('.ul');
+                var aPus_aLi=document.querySelectorAll('.ul li');
+                var aPus_aSpan=oUl.getElementsByTagName('span');
+
+                for(var i=0; i<aPus_aLi.length; i++){
+                    aPus_aLi[i].index=i;
+                    aPus_aLi[i].onmouseover=function(ev){
+                        var oEvent=ev || event;
+                        var n=hoverDir(this,oEvent);
+                        var from=oEvent.fromElement || oEvent.relatedTarget;
+                        if(this.contains(from))return;
+
+                        var oSpan=aPus_aSpan[this.index];
+
+                        switch(n){
+                            case 0:
+                                oSpan.style.left=200+'px';
+                                oSpan.style.top=0;
+                                break;
+                            case 1:
+                                oSpan.style.top=200+'px';
+                                oSpan.style.left=0;
+                                break;
+                            case 2:
+                                oSpan.style.left=-200+'px';
+                                oSpan.style.top=0;
+                                break;
+                            case 3:
+                                oSpan.style.top=-200+'px';
+                                oSpan.style.left=0;
+                                break;
+                        }
+
+                        moveChange(oSpan,{left:0,top:0});
+                    };
+
+                    aPus_aLi[i].onmouseout=function(ev){
+                        var oEvent=ev || event;
+                        var n=hoverDir(this,oEvent);
+
+                        var to=oEvent.toElement || oEvent.relatedTarget;
+                        if(this.contains(to))return;
+
+                        var oSpan=aPus_aSpan[this.index];
+
+                        switch(n){
+                            case 0:
+                                moveChange(oSpan,{left:200,top:0});
+                                break;
+                            case 1:
+                                moveChange(oSpan,{left:0,top:200});
+                                break;
+                            case 2:
+                                moveChange(oSpan,{left:-200,top:0});
+                                break;
+                            case 3:
+                                moveChange(oSpan,{left:0,top:-200});
+                                break;
+                        }
+                    };
+                }
+            })();
+        }
+    </script>
+</head>
+<body>
+<h3>HTML5/CSS3</h3>
+<ul class="ul">
+    <li class="opus">
+        <a href="html5/daoying/index.html">
+            <img src="img/h5_1.png"/>
+            <span>倒影</span>
+        </a>
+    </li>
+    <li class="opus">
+        <a href="html5/huabang/index.html">
+            <img src="img/h5_5.png"/>
+            <span>绘画板</span>
+        </a>
+    </li>
+    <li class="opus">
+        <a href="html5/3dzhanshi/index.html">
+            <img src="img/h5_3.png"/>
+            <span>3D图片展示</span>
+        </a>
+    </li>
+    <li class="opus">
+        <a href="html5/rizhao/index.html">
+            <img src="img/h5_4.png"/>
+            <span>日照效果</span>
+        </a>
+    </li>
+    <li class="opus">
+        <a href="html5/shizhong/index.html">
+            <img src="img/h5_2.png"/>
+            <span>H5时钟</span>
+        </a>
+    </li>
+    <li class="opus">
+        <a href="html5/texiao/index.html">
+            <img src="img/h5_6.png"/>
+            <span>图片特效</span>
+        </a>
+    </li>
+    <li class="opus">
+        <a href="html5/shiping/index.html">
+            <img src="img/h5_7.png"/>
+            <span>自定义视频</span>
+        </a>
+    </li>
+    <li class="opus">
+        <a href="html5/jindutiao/index.html">
+            <img src="img/h5_8.png"/>
+            <span>进度条</span>
+        </a>
+    </li>
+</ul>
+</body>
+</html>

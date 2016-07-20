@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0; list-style:none;}
+body{background:#222;}
+#oper{ width:240px; margin:0 auto; position:relative; z-index:2;}
+#oper div{ width:80px; height:80px; position:absolute; background:#94C7E3; color:#fff; text-align:center; line-height:80px; cursor:pointer;border-radius:50%;}
+#oper div.left{ left:0; top:80px;}
+#oper div.right{ left:160px; top:80px;}
+#oper div.top{ top:0; left:80px;}
+#oper div.down{ top:160px; left:80px;}
+#oper div:hover{ background:#D4B2DD; color:#f60;}
+#div1{ width:200px; height:200px;position:absolute; left:0; top:0; z-index:1;}
+#div1 img{width:100%;border-radius:50%;}
+span{position:relative;top:300px;left:555px;color:#94C7E3;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('div1');
+	var oBox=document.getElementById('oper');
+	var aDiv=document.getElementsByTagName('div');
+	var aD = oBox.getElementsByTagName('div');
+	var l=r=t=b=false
+	
+	oDiv.onmousedown=function(ev){
+		var oEvt=ev||event;
+		var dX=oEvt.clientX-oDiv.offsetLeft;
+		var dY=oEvt.clientY-oDiv.offsetTop;
+		document.onmousemove=function(ev){
+			var oEvt=ev||event;
+			oDiv.style.left=oEvt.clientX-dX+'px';
+			oDiv.style.top=oEvt.clientY-dY+'px'; 
+		}
+		document.onmouseup=function(){
+		document.onmousemove=null; 
+		document.onmouseup=null;
+		}		
+		 return false
+	}
+	
+	aD[0].onmouseover=function(){l=true;}
+	aD[0].onmouseout=function(){l=false;}
+	aD[1].onmouseover=function(){r=true;}
+	aD[1].onmouseout=function(){r=false;}
+	aD[2].onmouseover=function(){t=true;}
+	aD[2].onmouseout=function(){t=false;}
+	aD[3].onmouseover=function(){b=true;}
+	aD[3].onmouseout=function(){b=false;}
+	
+	document.onkeydown=function(ev){
+		var oEvt=ev||event;
+		console.log(oEvt.keyCode);
+		switch(oEvt.keyCode){
+			case 37:
+			l=true;  break;
+			case 38:
+			t=true;  break;
+			case 39:
+			r=true;	  break;
+			case 40:
+			b=true;   break;
+		}
+		if(oEvt.ctrlKey && oEvt.keyCode ==81 ){
+		oDiv.style.left=0;
+		oDiv.style.top=0;
+		return false;
+	    }
+		if(oEvt.ctrlKey && oEvt.keyCode == 187){
+			oDiv.style.width=oDiv.offsetWidth+10+'px';
+			oDiv.style.height=oDiv.offsetHight+10+'px';
+		return false;	
+		}
+		if(oEvt.ctrlKey && oEvt.keyCode == 189){
+			oDiv.style.width=oDiv.offsetWidth-10+'px';
+			oDiv.style.height=oDiv.offsetHeight-10+'px';
+		return false;	
+		}
+	}
+	document.onkeyup=function(ev){
+		var oEvt=ev||event;
+		switch(oEvt.keyCode){
+			case 37:
+			l=false;  break;
+			case 38:
+			t=false;  break;
+			case 39:
+			r=false;   break;
+			case 40:
+			b=false;   break;
+		}
+	}
+	
+	setInterval(function(){
+		if(l){oDiv.style.left=oDiv.offsetLeft-5+'px';}
+		if(t){oDiv.style.top=oDiv.offsetTop-5+'px';}
+		if(r){oDiv.style.left=oDiv.offsetLeft+5+'px';}
+		if(b){oDiv.style.top=oDiv.offsetTop+5+'px';}
+	},10)
+}
+
+
+</script>
+
+</head>
+
+<body>
+
+<div id="oper">
+	<div class="left">左</div>
+    <div class="right">右</div>
+    <div class="top">上</div>
+    <div class="down">下</div>
+</div>
+<span>Ctrl+'+' 变大</span><br/>
+<span>Ctrl+'-' 变小</span><br/>
+<span>Ctrl+'q' 回原位</span><br/>
+<div id="div1"><img src="t1.jpg" alt="tu"/> </div>
+</body>
+</html>

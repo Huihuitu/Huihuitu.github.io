@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: #000;
+        }
+        #cs{
+            background: #fff;
+            margin:100px auto;
+            display: block;
+        }
+    </style>
+    <script>
+        window.onload= function () {
+            var oC=document.querySelector('#cs');
+            var gd=oC.getContext('2d');
+
+            oC.onmousedown=function(ev){
+                var x=ev.clientX-oC.offsetLeft;
+                var y=ev.clientY-oC.offsetTop;
+                gd.beginPath();
+                gd.moveTo(x,y);
+               document.onmousemove=function(ev){
+                    var x=ev.clientX-oC.offsetLeft;
+                    var y=ev.clientY-oC.offsetTop;
+                    gd.lineTo(x,y);
+                   gd.stroke();
+                };
+                document.onmouseup=function(){
+                    document.onmousemove= document.onmouseup=null;
+                }
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<canvas id="cs" width="800" height="500"></canvas>
+</body>
+</html>

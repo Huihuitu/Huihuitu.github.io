@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+img { border: none; }
+body{background:#222;}
+.box{width:888px;height:300px;background:#ccc;overflow:hidden;margin:150px auto;position:relative;}
+.box .prev{cursor: pointer;width:50px;height:50px;position:absolute;left:0;top:130px;font:bold 40px/50px "";text-align:center;border:3px solid #fff;color:#fff;z-index: 2;}
+.box .next{cursor: pointer;width:50px;height:50px;position:absolute;right:0;top:130px;font:bold 40px/50px "";text-align:center;border:3px solid #fff;color:#fff;z-index: 2;}
+.box ol{ position: absolute; left: 380px; bottom: 5px; z-index: 2;}
+.box ol li { float: left; margin-right: 3px; display: inline; cursor: pointer; background: #fcf2cf; border: 1px solid #f47500; padding: 6px 10px; color: #d94b01; font:12px ""; }
+.box .active { padding: 8px 14px; font-weight: bold; color: #ffffff; background: #ffb442; position: relative; bottom: 2px; }
+.box ul{position: absolute; top: 0; left: 0; z-index: 1;}
+.box ul li{width:888px;height:300px;float:left;}
+</style>
+    <script src="move8.js"></script>
+<script>
+    window.onload=function() {
+        var oPlay = document.getElementById('play');
+        var aHead = oPlay.children[2].children;
+        var oUl = oPlay.children[3];
+        var oNext = oPlay.getElementsByClassName('next')[0];
+        var oPrev = oPlay.getElementsByClassName('prev')[0];
+        var now = 0;
+        var ready = true;
+
+        oUl.innerHTML += oUl.innerHTML;
+        oUl.style.width = oUl.children.length * 888 + 'px';
+
+        for (var i = 0; i < aHead.length; i++) {
+            (function (index) {
+                aHead[i].onclick = function () {
+                    now = index;
+                    tab();
+                };
+            })(i);
+        }
+        function tab(){
+            for(var i=0;i<aHead.length;i++){
+                aHead[i].className='';
+            }
+            if(now==aHead.length){
+                aHead[0].className='active';
+            }else{
+                aHead[now].className='active';
+            }
+            move(oUl,{left:-now*888},{fn: function () {
+                ready=true;
+                if(now==aHead.length){
+                    oUl.style.left=0;
+                    now=0;
+                }
+            }})
+        }
+        oPrev.onclick= function () {
+            if(!ready) return;
+            ready=false;
+            if(now==0){
+                oUl.style.left= -oUl.offsetWidth/2+'px';
+                now=aHead.length-1;
+            }else{
+                now--;
+            }
+            tab();
+        }
+
+        oNext.onclick= function () {
+            if(!ready) return;
+            ready=false;
+            now++;
+            tab();
+        }
+
+        var timer=setInterval(function () {
+            now++
+            tab();
+        },1000);
+
+        oPlay.onmouseover= function () {
+            clearInterval(timer);
+        }
+        oPlay.onmouseout= function () {
+           timer=setInterval(function () {
+                now++
+                tab();
+            },1000);
+        }
+    }
+</script>
+</head>
+
+<body>
+<div class="box" id="play">
+    <p class="prev">&laquo;</p>
+    <p class="next">&raquo;</p>
+    <ol>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <ul>
+        <li><a href="javascript:;"><img src="1.png" alt="广告一" /></a></li>
+        <li><a href="javascript:;"><img src="2.png" alt="广告二" /></a></li>
+        <li><a href="javascript:;"><img src="3.png" alt="广告三" /></a></li>
+        <li><a href="javascript:;"><img src="4.png" alt="广告四" /></a></li>
+        <li><a href="javascript:;"><img src="5.png" alt="广告五" /></a></li>
+    </ul>
+</div>
+</body>
+</html>
