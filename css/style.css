@@ -1,5 +1,6 @@
 .warp{
-    width:100%
+    width:100%;
+    overflow: hidden;
 }
 .banner{
     background:url(../img/bg3.png) no-repeat;
@@ -17,7 +18,7 @@
     height:360px;
 }
 .banner .banner_nav{
-    width:100%;
+    width:1360px;
     height:40px;
     position:absolute;
     bottom:0;
@@ -208,7 +209,7 @@
     /*text-shadow: 2px 2px 5px #f54fc3;*/
 }
 .nav .nav_con{
-    width:100%;
+    width:1360px;
     height:400px;
     padding:8%;
     box-sizing: border-box;
