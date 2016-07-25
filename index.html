@@ -1,15 +1,22 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
 <title>Home</title>
-<meta name="viewport" content="width=device-width,user-scalab=no，ini-scale=1 ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
+<link rel="stylesheet" href="css/bootstrap.css" />
 <link rel="stylesheet" href="css/common.css" />
 <link rel="stylesheet" href="css/style.css" />
 <script src="js/move8.js"></script>
 <script>
 
+	window.onresize = changeClient;
+	function changeClient() {
+		document.documentElement.style.fontSize = 32 / 320 * document.documentElement.clientWidth + 'px';
+	}
 	window.onload= function () {
+
+		changeClient();
 		var  oBanner=document.querySelector('.banner');
 		var oConent=document.querySelector('.conent');
 		var oBox=document.querySelector('.box');
@@ -51,28 +58,14 @@
 			var scrTop=document.documentElement.scrollTop||document.body.scrollTop;
 			if(scrTop>1){
 				oBanner.style.height='40px';
-				oConent.style.marginTop='180px';
 				oBox.style.height='40px';
-				oMenu.style.bottom='25px';
-				oConent.style.height='660px';
                 move(oBannerN,{opacity:1},{time:600,type:'linear'});
 				move(oGif,{height:40,opacity:1},{time:600,type:'linear'});
-				move(oJb,{top:80},{time:600});
-				move(oZy,{top:80},{time:600});
-				move(oZy1,{top:130},{time:600});
-				move(oJb1,{top:130},{time:600});
 			}else {
 				oBanner.style.height='360px';
 				oBox.style.height='360px';
-				oConent.style.marginTop='40px';
-				oConent.style.height='960px';
-				oMenu.style.bottom='-120px';
                 move(oBannerN,{opacity:0},{time:600,type:'linear'});
 				move(oGif,{height:360,opacity:1},{time:600,type:'linear'});
-				move(oJb,{top:530},{time:600});
-				move(oZy,{top:530},{time:600});
-				move(oZy1,{top:565},{time:600});
-				move(oJb1,{top:565},{time:600});
 			}
 			if(bl){
 				clearInterval(timer);
@@ -85,11 +78,15 @@
 			move(oLo,{opacity:0},{time:600,type:'linear'});
 			//oMenu.style.display='block';
 			move(oMenu,{opacity:1},{time:1200,type:'linear'});
-			move(oJb,{left:130},{time:300,type:'ease-out'});
-			move(oZy,{right:130},{time:300,type:'ease-out'});
+			move(oJb,{opacity:1},{time:1100,type:'ease-out'});
+			move(oZy,{opacity:1},{time:1100,type:'ease-out'});
 			move(oZy1,{opacity:1},{time:2200,type:'linear'});
 			move(oJb1,{opacity:1},{time:2200,type:'linear'});
 			oMenu.style.zIndex='2';
+			oJb.style.display='block';
+			oZy.style.display='block';
+			oZy1.style.display='block';
+			oJb1.style.display='block';
 		};
 
 		var oH3=document.querySelector('.menu_logo ');
@@ -196,65 +193,43 @@
 					var oSpan=aPus_aSpan[this.index];
 					switch(n){
 						case 0:
-							move(oSpan,{left:250,top:0});
+							move(oSpan,{left:250,top:-30});
 							break;
 						case 1:
-							move(oSpan,{left:0,top:250});
+							move(oSpan,{left:0,top:330});
 							break;
 						case 2:
-							move(oSpan,{left:-250,top:0});
+							move(oSpan,{left:-250,top:-30});
 							break;
 						case 3:
-							move(oSpan,{left:0,top:-250});
+							move(oSpan,{left:0,top:-330});
 							break;
 					}
 				};
 			}
 		})();
 
-		var oTab=document.getElementById('tab');
-		var aTabli=oTab.children;
-		for(var i=0;i<aTabli.length;i++){
-			aTabli[i].style.left = i*40+'px';
-		}
-		for(var i=0;i<aTabli.length;i++){
-			(function(index){
-				aTabli[i].onmouseover= function () {
-					for(var i=0;i<aTabli.length;i++){
-						if(i<=index){
-							move(aTabli[i],{left:i*40});
-						}else if(i>index){
-							move(aTabli[i],{left:820+(i-1)*40});
-						}
-					}
-				}
-			})(i);
-		}
-
-
-
-
 	};
 </script>
 </head>
 <body>
-<div class="warp">
+
 	<div class="banner">
 		<img src="img/c.gif" id="gif"/>
 		<div class="banner_nav">
-            <a href="">HOME</a>xcc
-            <a href="">ABOUT</a>
-            <a href="">SKILLS</a>
-            <a href="">CONTACT</a>
+            <a href="#">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#skills">SKILLS</a>
+            <a href="#contact">CONTACT</a>
         </div>
 	</div>
-	<div class="conent">
-		<div class="box">
-			<div class="menu">
-				<h3 class="menu_logo"></h3>
-			</div>
+<div class="warp" id="warp">
+	<div class="box"></div>
+	<div class="conent" id="about">
+		<div class="menu">
+			<h3 class="menu_logo"></h3>
 		</div>
-		<h2>碉堡</h2>
+		<h2>前端攻城狮</h2>
 		<div class="logo">
 			<i></i>
 			<span> My resume</span>
@@ -266,45 +241,58 @@
 		<img src="img/opus.png" alt="opus"  class="zy_1"/>
 		<img src="img/about.png" alt="about" class="jb_1"/>
 	</div>
-	<div class="nav">
+	<div class="nav" id="skills">
 		<p>作品展示</p>
-		<ul class="nav_con">
-			<li class="opus bg1">
+		<ul class="nav_con container">
+			<li class="opus bg1 text-center">
 				<a href="index_css.html" target="_blank">
 					<span>CSS/HTML</span>
 				</a>
 			</li>
-			<li class="opus bg2">
+			<li class="opus bg2 text-center">
 				<a href="index_js.html" target="_blank">
 					<span>JavaScript</span>
 				</a>
 			</li>
-			<li class="opus bg3">
+			<li class="opus bg3 text-center">
 				<a href="index_html5.html" target="_blank">
 					<span>HTML5/CSS3</span>
 				</a>
 			</li>
 		</ul>
 	</div>
-	<div class="footer">
-		<h3>XXX</h3>
-		<p>xxxxxxxxxxxxx<br/>xxxxxxxxxxxxx</p>
-		<ul id="tab">
-			<li>
-				<img src="img/html.png" alt="html"/>
-				<span style="background:#dccdbf">H<br/>T<br/>M<br/>L<br/></span>
-			</li>
-			<li>
-				<img src="img/js.png" alt="js"/>
-				<span style="background:#1a526d">
-					J<br/>a<br/>v<br/>a<br/>S<br/>c<br/>r<br/>i<br/>p<br/>t<br/>
-				</span>
-			</li>
-			<li>
-				<img src="img/css.png" alt="css"/>
-				<span style="background:#84d8ff">C<br/>S<br/>S<br/></span>
-			</li>
-		</ul>
+	<div class="content-contact" id="contact">
+		<div class="map">
+			<div class="contact-us">
+				<div class="container">
+					<div class="contact-us-text wow bounceIn" data-wow-delay="0.4s">
+						<h2>留下您的建议</h2>
+						<p>留下您对我前端代码以及设计方面，学习方面的建议，您的建议对我很重要.</p>
+					</div>
+					<div class="text-fields">
+						<div class="col-md-6 text-fields-left">
+							<div class="text-fields-left">
+								<form>
+									<input type="text"   value="姓名">
+									<input type="text"   value="电话">
+									<input type="text"   value="邮件">
+								</form>
+							</div>
+						</div>
+						<div class="col-md-6 text-fields-right">
+							<textarea  rows="6" cols="50" value="您的建议">您的建议</textarea>
+						</div>
+						<div class="clearfix"> </div>
+						<div class="button-sub">
+							<form>
+								<input type="submit" value="提交">
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="partner">
 

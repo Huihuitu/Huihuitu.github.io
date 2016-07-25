@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+
+        #warp{width: 100%;overflow: hidden;}
         ul{width:880px;height:410px;padding:100px 0 0 260px;}
         body{background: url("img/ccn.gif") no-repeat;background-size: 100% 888px;}
         h3{
@@ -39,6 +41,14 @@
         img{   width:200px;height:200px;}
     </style>
     <script>
+       // var oWarp=document.getElementById('warp');
+        changeClient();
+        window.onresize = changeClient;
+        function changeClient() {
+            document.documentElement.style.fontSize = 32 / 320 * document.documentElement.clientWidth + 'px';
+           // oWarp.style.height = document.documentElement.clientHeight + 'px';
+        }
+
         function getStyle(obj,name){
             return (obj.currentStyle || getComputedStyle(obj,false))[name];
         }
@@ -211,6 +221,7 @@
     </script>
 </head>
 <body>
+<div id="warp">
 <h3>HTML5/CSS3</h3>
 <ul class="ul">
     <li class="opus">
@@ -262,5 +273,6 @@
         </a>
     </li>
 </ul>
+</div>
 </body>
 </html>

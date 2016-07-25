@@ -5,10 +5,11 @@
     <title>Title</title>
     <style>
         *{margin:0; padding:0; list-style:none;}
-        body{
+        #warp{
             overflow:hidden;
-            background:url("img/caa.gif");
+            background:url("img/ccz.gif") no-repeat;
             background-size: 100%;
+            height:800px;
         }
         h3{
             width: 125px;
@@ -37,7 +38,9 @@
             text-align: center;
             top:80px;left:550px;
         }
-        ul{width:3300px;
+        ul{
+            width:3300px;
+            height: 350px;
             position:relative;
             top:100px;
             left:435px;
@@ -103,27 +106,29 @@
     </script>
 </head>
 <body>
-<h3>CSS/HTML</h3>
-<p>
-    <span id="btn1">←向左走</span>
-    <span  id="btn2">向右走→</span>
-</p>
-<ul class="ul">
-    <li class="cur">
-        <a href="html/meilishuo/index.html" target="_blank"> <img src="img/html1.png" alt=""/></a>
-    </li>
-    <li class="r1">
-        <a href="html/aiqiyi/index.html" target="_blank"> <img src="img/html2.png" alt=""/></a>
-    </li>
-    <li class="r2">
-        <a href="html/beijingdaxue/index.html" target="_blank"> <img src="img/html3.png" alt=""/></a>
-    </li>
-    <li class="l2">
-        <a href="html/huanyu/index.html" target="_blank"> <img src="img/html4.png" alt=""/></a>
-    </li>
-    <li class="l1">
-        <a href="html/boya/index.html" target="_blank"> <img src="img/html5.png" alt=""/></a>
-    </li>
-</ul>
+<div id="warp">
+    <h3>CSS/HTML</h3>
+    <p>
+        <span id="btn1">←向左走</span>
+        <span  id="btn2">向右走→</span>
+    </p>
+    <ul class="ul">
+        <li class="cur">
+            <a href="html/meilishuo/index.html" target="_blank"> <img src="img/html1.png" alt=""/></a>
+        </li>
+        <li class="r1">
+            <a href="html/aiqiyi/index.html" target="_blank"> <img src="img/html2.png" alt=""/></a>
+        </li>
+        <li class="r2">
+            <a href="html/beijingdaxue/index.html" target="_blank"> <img src="img/html3.png" alt=""/></a>
+        </li>
+        <li class="l2">
+            <a href="html/huanyu/index.html" target="_blank"> <img src="img/html4.png" alt=""/></a>
+        </li>
+        <li class="l1">
+            <a href="html/boya/index.html" target="_blank"> <img src="img/html5.png" alt=""/></a>
+        </li>
+    </ul>
+</div>
 </body>
 </html>
