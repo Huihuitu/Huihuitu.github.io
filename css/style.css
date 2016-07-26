@@ -178,16 +178,16 @@
     width:100%;
     height:100%;
     float:left;
-    background-size: 100%;
+
 }
-/*.conent .box .menu .menu_logo span{
+/*.conent .menu .menu_logo span{
 
     -webkit-transform-style: preserve-3d;
     position:absolute;
     top:0;left:0;
     -webkit-transform: perspective(800px) rotateY(0deg);
 }
-.conent .box .menu .menu_logo span .front{
+.conent .menu .menu_logo span .front{
     position:absolute;
     top:0;left:0;
     width:100%;
@@ -195,7 +195,7 @@
     background:url(../img/0.png) no-repeat;
     -webkit-transform: translateZ(1px);
 }
-.conent .box .menu .menu_logo span .back{
+.conent .menu .menu_logo span .back{
     position:absolute;
     top:0;left:0;
     width:100%;
