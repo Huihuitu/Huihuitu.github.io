@@ -5,8 +5,8 @@
     <title>Title</title>
     <style>
         *{margin:0; padding:0; list-style:none;}
-     body{background: #222;overflow: hidden;}
-     #warp{width: 100%;}
+     body{background: #222;}
+     #warp{width: 100%;position: relative;}
         h3{
             width: 125px;
             color: #17598b;
@@ -35,11 +35,11 @@
             top:80px;left:550px;
         }
         ul{
-            width:3300px;
+            width:500px;
             height: 350px;
-
+            position: relative;
             top:100px;
-            left:435px;
+            margin:0 auto;
             -webkit-transition:1s all ease;
         }
         ul li{
@@ -85,7 +85,7 @@
                     bl=false;
                 }
                 oC.addEventListener('transitionend',tranend,false);
-            }
+            };
 
             oBtn2.onclick= function () {
                 if(bl) return;
