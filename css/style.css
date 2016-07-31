@@ -405,14 +405,16 @@
 }
 @media (max-width:1280px)
 {
-    .nav_con li{margin:10px 10px;}
+    .nav .nav_con li{margin:10px 20px;}
 }
-@media (max-width:1026px)
+@media (max-width:1104px)
 {
+    .nav .nav_con li{margin:10px 20px;}
     .nav{height:800px;}
 }
 @media (max-width:682px)
 {
+    .nav .nav_con li{margin:10px 10px;}
     .nav{height:1060px;}
     .conent{height: 1160px;}
     .conent .jb{
@@ -437,3 +439,29 @@
     }
 }
 
+@media (max-width:682px)
+{
+    .conent .jb{
+        top:620px;
+        left:30px;
+        width: 100px;
+    }
+    .conent .zy{
+        top:620px;
+        right:30px;
+        width: 100px;
+    }
+    .conent .zy_1{
+        top:680px;
+        right:20px;
+        width: 39%;
+    }
+    .conent .jb_1{
+        top:680px;
+        left:20px;
+        width: 39%;
+    }
+    .banner .banner_nav a{
+        font:12px/40px "kaiti";
+    }
+}
