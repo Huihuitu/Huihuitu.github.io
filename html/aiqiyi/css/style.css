@@ -69,8 +69,8 @@
 
 .content_1_c{margin-left:23px;width:380px;} 
 .content_1_c dl dt{position:relative;margin-bottom:25px;}
-.content_1_c dl dt b{position:absolute;width:380px;height:40px;background:#404040;bottom:0;opacity:0.8;}
-.content_1_c dl dt h3 a{position:absolute;width:330px;height:40px;bottom:0;color:#fff;font:16px/40px "微软雅黑";padding-left:50px;}
+.content_1_c dl dt b{position:absolute;width:380px;height:40px;background:#404040;bottom:0;opacity:0.8;left: 0;}
+.content_1_c dl dt h3 a{position:absolute;width:330px;height:40px;bottom:0;color:#fff;font:16px/40px "微软雅黑";padding-left:50px;left: 0;}
 .content_1_c dl dt i{position:absolute;width:32px;height:27px;background:url(../img/lao1.png) no-repeat;bottom:6px;left:7px;z-index:2;cursor:pointer;}
 .content_1_c dl dd i{width:13px;height:16px;background:url(../img/c1_d.png) no-repeat;display:block;float:left;}
 .content_1_c dl dd a{font:16px/1 "微软雅黑";color:#333;display:block;margin-bottom:19px;margin-left:8px;float:left;}
