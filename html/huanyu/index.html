@@ -7,32 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	<link rel="stylesheet" type="text/css" href="css/golbal.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(
-			function(){
-				$(".nav .bd ul li").mouseenter(
-					function(){
-						$(".zicaidan").hide();
-						$(this).children(".zicaidan").show();
-					}
-				);
-				$(".nav .bd ul li").mouseleave(
-					function(){
-						$(this).children(".zicaidan").delay(2000).hide(1);
-					}
-				);
-			}
-		);
-	</script>
-	<script type="text/javascript" src="js/hx.js"></script>
-	<script type="text/javascript" src="js/gb.js"></script>
-	<script type="text/javascript">
-		window.onload = function(){
-			hx(500,2000);
-			gb(3000);
-		}
-	</script>
+
 </head>
 <body>
 	<div class="banxin"></div>
